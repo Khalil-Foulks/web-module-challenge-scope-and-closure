@@ -81,8 +81,14 @@ finalScore(inning, 9) might return:
 */ 
 
 function finalScore(inning,numberOfInnings){
-  const score = {"Home":(inning() * numberOfInnings),"Away":(inning() * numberOfInnings)};
-  return score;
+  let scoreHome = 0;
+  let scoreAway = 0; 
+  
+  for(let i = 0; i < numberOfInnings; i++){
+    scoreHome += inning();
+    scoreAway += inning();
+    }
+  return {"Home": scoreHome,"Away":scoreAway};
 }
 
 console.log(finalScore(inning,9));
