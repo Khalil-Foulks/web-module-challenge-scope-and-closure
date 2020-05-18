@@ -13,7 +13,7 @@
  * Example of usage of this higher-order function:
  * Invoking `processFirstItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'foofoo'.
-*/
+ */
 function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
@@ -34,13 +34,13 @@ function processFirstItem(stringList, callback) {
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *counter1 is better for tracking incremental increases of a variable and counter2 is better for a one time increase of a variable.
-*/
+ */
 
 // counter1 code
 function counterMaker() {
   let count = 0;
   return function counter() {
-   return count++;
+    return count++;
   }
 }
 
@@ -58,9 +58,9 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning( /*Code Here*/ ) {
 
-    return Math.floor(Math.random() * 3);
+  return Math.floor(Math.random() * 3);
 
 }
 
@@ -78,20 +78,23 @@ finalScore(inning, 9) might return:
   "Away": 5,
 }
 
-*/ 
+*/
 
-function finalScore(inning,numberOfInnings){
+function finalScore(inning, numberOfInnings) {
   let scoreHome = 0;
-  let scoreAway = 0; 
-  
-  for(let i = 0; i < numberOfInnings; i++){
+  let scoreAway = 0;
+
+  for (let i = 0; i < numberOfInnings; i++) {
     scoreHome += inning();
     scoreAway += inning();
-    }
-  return {"Home": scoreHome,"Away":scoreAway};
+  }
+  return {
+    "Home": scoreHome,
+    "Away": scoreAway
+  };
 }
 
-console.log(finalScore(inning,9));
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -114,8 +117,29 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, numberOfInnings) {
+  let scoreHome = 0;
+  let scoreAway = 0;
+
+  for (let i = 0; i < numberOfInnings; i++) {
+    scoreHome += inning();
+    scoreAway += inning();
+    let inningNumber = i + 1;
+
+    if (inningNumber === 1) {
+      console.log(`${inningNumber}st inning: ${scoreHome} - ${scoreAway}`);
+    } 
+    else if (inningNumber === 2) {
+      console.log(`${inningNumber}nd inning: ${scoreHome} - ${scoreAway}`);
+    } 
+    else if (inningNumber === 3) {
+      console.log(`${inningNumber}rd inning: ${scoreHome} - ${scoreAway}`);
+    } 
+    else {
+      console.log(`${inningNumber}th inning: ${scoreHome} - ${scoreAway}`);
+    }
+  }
+  return `Final Score: ${scoreHome} - ${scoreAway}`;
 }
 
-
+console.log(scoreboard(inning, 9));
