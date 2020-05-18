@@ -60,9 +60,11 @@ Write a function called `inning` that generates a random number of points that a
 
 function inning(/*Code Here*/){
 
-    /*Code Here*/
+    return Math.floor(Math.random() * 3);
 
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -78,11 +80,12 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning,numberOfInnings){
+  const score = {"Home":(inning() * numberOfInnings),"Away":(inning() * numberOfInnings)};
+  return score;
 }
+
+console.log(finalScore(inning,9));
 
 /* Task 4: 
 
